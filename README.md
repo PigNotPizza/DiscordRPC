@@ -21,6 +21,10 @@ https://github.com/orangemelo/DiscordRPC/releases
 
 4. Your are all set up!🥳
 
+# Contribution
+
+Made by #PigPizza ❤️
+
 
 ## Badges
 
