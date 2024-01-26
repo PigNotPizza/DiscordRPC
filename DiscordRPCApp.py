@@ -49,6 +49,10 @@ class DiscordRPCApp(QtWidgets.QMainWindow):
 
         self.initUI()
 
+        # Store references to child windows
+        self.settings_window = None
+        
+
     def initUI(self):
         self.setWindowTitle("Discord RPC")
         self.setGeometry(100, 100, 800, 600)
@@ -118,7 +122,9 @@ class DiscordRPCApp(QtWidgets.QMainWindow):
         layout.addWidget(self.set_activity_button)
         self.toolbar.addAction(self.save_action)
 
-        self.update_interval = 5000
+        
+
+        self.update_interval = 1000
         self.frame_entries = []
         self.defput_num = -1
         self.settings_window = None
@@ -128,7 +134,6 @@ class DiscordRPCApp(QtWidgets.QMainWindow):
             current_time = int(time.time())
             duration_text = self.frame_entries[self.defput_num]["duration"].text()
             end_time = current_time + int(duration_text) if duration_text.isdigit() else current_time
-            self.defput_num = (self.defput_num) % len(self.frame_entries)
 
             activity = {
                 "details": self.frame_entries[self.defput_num]["details"].text(),
@@ -161,6 +166,14 @@ class DiscordRPCApp(QtWidgets.QMainWindow):
             except Exception as e:
                 print(f"Error updating Rich Presence: {e}")
 
+            # Increment defput_num for the next update
+            self.defput_num = (self.defput_num + 1) % len(self.frame_entries)
+
+
+    def start_timer(self):
+        self.timer = QtCore.QTimer(self)
+        self.timer.timeout.connect(self.set_activity)
+        self.timer.start(self.update_interval)
 
 
 
@@ -224,8 +237,10 @@ class DiscordRPCApp(QtWidgets.QMainWindow):
             self.RPC = Presence(client_id)
             self.RPC.connect()
             print("Connected to Discord RPC")
+            self.start_timer()  # Add this line
         except Exception as e:
             print(f"Error connecting to Discord RPC: {e}")
+
 
 
     def disconnect_rpc(self):
@@ -291,6 +306,10 @@ class DiscordRPCApp(QtWidgets.QMainWindow):
                     "QLabel { color: #000; }"
                 )
 
+    
+
+    
+
     def save_settings(self):
         client_id = self.client_id_entry.text()
         frames = self.frames_entry.text()
@@ -346,4 +365,3 @@ if __name__ == '__main__':
     window = DiscordRPCApp()
     window.show()
     sys.exit(app.exec_())
-
