@@ -15,11 +15,21 @@ DiscordRPC is an open-source Python application designed for creating and custom
 1. Download the latest version of the release, which can be found here:
 https://github.com/orangemelo/DiscordRPC/releases
 
+<<<<<<< HEAD
 2. Launch the installation file
 
 3. Find and open the app
 
 4. Your are all set up!🥳
+=======
+2. Extract DiscordRPC folder to any directory.
+
+> We recommend puting the DiscordRPC folder onto desktop
+
+4. Find and launch the exe file, called "DiscordRPC.exe".
+
+5. Your are all set up!🥳
+>>>>>>> d90b851be097a688c1474769cb3de659e09853d9
 
 # Contribution
 
