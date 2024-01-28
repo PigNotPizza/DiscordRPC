@@ -26,7 +26,7 @@ https://github.com/orangemelo/DiscordRPC/releases
 
 > We recommend putting the DiscordRPC folder onto desktop
 
-4. Find and launch the exe file, called "DiscordRPC.exe".
+4. Find and launch the .exe file, called "DiscordRPC.exe".
 
 5. Your are all set up!🥳
 
