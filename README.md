@@ -10,7 +10,7 @@ DiscordRPC is an open-source Python application designed for creating and custom
 - Set details, images, and buttons for a personalized presence.
 - Seamlessly switch between frames to dynamically update your Discord presence.
 - Dark and light theme options for a visually pleasing experience.
-# 🚗 How to use 🚗
+# 🚗 How to download and install 🚗
 
 1. Download the latest version of the release, which can be found here:
 https://github.com/orangemelo/DiscordRPC/releases
