@@ -124,7 +124,7 @@ class DiscordRPCApp(QtWidgets.QMainWindow):
 
         
 
-        self.update_interval = 1000
+        self.update_interval = 3000
         self.frame_entries = []
         self.default_num = -1
         self.settings_window = None
@@ -194,14 +194,22 @@ class DiscordRPCApp(QtWidgets.QMainWindow):
             self.default_num = (self.default_num + 1) % len(self.frame_entries)
 
     def update_buttons(self, activity):
+        buttons = []
+
         for i in range(1, 3):
             button_label = self.frame_entries[self.default_num][f"button{i}_label"].text()
             button_url = self.frame_entries[self.default_num][f"button{i}_url"].text()
 
             if button_label and button_url:
-                activity["buttons"] = [{"label": button_label, "url": button_url}]
-            else:
-                activity["buttons"] = []
+                buttons.append({"label": button_label, "url": button_url})
+        if buttons:
+            activity["buttons"] = buttons
+
+        # Ensure that "buttons" field is always assigned, even if empty
+        
+
+
+
 
     def start_timer(self):
         self.timer = QtCore.QTimer(self)
